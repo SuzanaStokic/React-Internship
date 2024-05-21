@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { useMovies } from "./useMovies";
+import {NavBar} from "./components/NavBar";
+import {Main} from "./components/Main";
+import {ListMovie} from "./components/ListMovie";
+import { Search } from "./components/Search";
+import { FavoriteMovies } from "./components/FavoriteMovies";
+import { MovieDetail } from "./components/MovieDetail";
+import { MovieInfo } from "./interface/MovieInfo";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App: React.FC = () => {
+    const [query, setQuery] = useState<string>("");
+    const [selectedId, setSelectedId] = useState<null>(null);
+    const [favorite, setFavorite] = useState<MovieInfo[]>([]);
+    const {movies, isLoading, error} = useMovies(query);
+
+    function handleAddToFavorites(movie: MovieInfo) {
+        setFavorite((favorite) => [...favorite, movie]);
+    }
+
+
+    return (
+        <>
+            <NavBar>
+                <Search query={query} setQuery={setQuery} />
+                Lala
+               
+            </NavBar>
+
+            <Main>
+                <MovieDetail selectedId={selectedId} onAddToFavorites={handleAddToFavorites}/>
+                <ListMovie movies={movies}></ListMovie>
+                <FavoriteMovies favorite={favorite} />
+            </Main>
+        </>
+    )
 }
-
 export default App;
