@@ -6,7 +6,7 @@ interface SearchProps {
 const Search: React.FC<SearchProps> = ({ query, setQuery })=> {
     return (
         <input className="search" 
-            type="text" placeholder="Search movies" 
+            type="text" placeholder="Search" 
             value={query} 
             onChange={(e) => setQuery(e.target.value)} 
         />

@@ -4,10 +4,31 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Courier New';
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: flex-end;
+  height: 20vh;
+  background-color: lightgray;
+}
+
+.search {
+  margin-top: 20px;
+  margin-right: 10px;
+  height: 8vh;
+  width: 60vh;
+  text-align: start;
+  padding-left: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: grey;
+  background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 30px;
 }

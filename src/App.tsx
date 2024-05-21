@@ -25,7 +25,11 @@ const App: React.FC = () => {
 
     return (
         <>
-        {MoviesJSON && MoviesJSON.map(movie => {
+            <NavBar>
+                <Search query={query} setQuery={setQuery} /> 
+            </NavBar> 
+
+            {MoviesJSON && MoviesJSON.map(movie => {
             return (
                 <div className="box" key={movie.id}>
                     <strong>{movie.title}</strong>
@@ -39,9 +43,6 @@ const App: React.FC = () => {
                 </div>
             )
         })}
-            <NavBar>
-                <Search query={query} setQuery={setQuery} /> 
-            </NavBar> 
 
             <Main>
                 <ListMovie movies={movies}></ListMovie>
