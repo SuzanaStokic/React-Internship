@@ -10,7 +10,7 @@ export const FavoriteMovies = (props: FavoritesProps) => {
     return (
         <ul className="list list-favorite">
             {props.favorite?.map((movie) => (
-                <FavoriteMovie movie={movie} key={movie.Id}/>
+                <FavoriteMovie movie={movie} key={movie.id}/>
             ))}
         </ul>
     )

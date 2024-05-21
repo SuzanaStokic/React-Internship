@@ -1,7 +1,7 @@
 export interface MovieInfo {
-    Id: number;
-    Title: string;
-    Overview: string;
-    ReleaseDate: string;
-    PosterPath: string;
+    id: number;
+    title: string;
+    rating: number;
+    genre: string;
+    actors: string[];
 }

@@ -7,10 +7,9 @@ type MovieProps = {
 const Movie: React.FC<MovieProps> = ({ movie }) => {
     return (
         <li>
-            <img src={movie.PosterPath} alt={`${movie.Title}}`} />
-            <h3>{movie.Title}</h3>
+            <h3>{movie.title}</h3>
             <div>
-                <p>{movie.ReleaseDate}</p>
+                <p>{movie.rating}</p>
             </div>
         </li>
     );

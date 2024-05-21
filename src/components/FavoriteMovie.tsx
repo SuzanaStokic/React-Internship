@@ -8,7 +8,7 @@ export const FavoriteMovie = (props: FavoriteProps) => {
 
     return (
         <li>
-            <h3>{props.movie.Title}</h3>
+            <h3>{props.movie.title}</h3>
         </li>
     )
 } 

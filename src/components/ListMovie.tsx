@@ -9,7 +9,7 @@ export const ListMovie = (props: ListProps) => {
     return (
         <ul className="list list-movies">
             {props.movies?.map((movie) => (
-                <Movie movie={movie} key={movie.Id}  />
+                <Movie movie={movie} key={movie.id}  />
             ))}
         </ul>
     )

@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "title": "Batman",
+        "rating": 7,
+        "genre": "action",
+        "actors": [
+            "Robert Pattinson",
+            "Zoe Kravitz"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Interstellar",
+        "rating": 8,
+        "genre": "science fiction",
+        "actors": [
+            "Matthew McConaughey",
+            "Anne Hathaway"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Jaws",
+        "rating": 6,
+        "genre": "thriller",
+        "actors": [
+            "Richard Dreyfuss"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "The Shining",
+        "rating": 9,
+        "genre": "horror",
+        "actors": [
+            "Jack Nicholson"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Seven",
+        "rating": 7,
+        "genre": "horror",
+        "actors": [
+            "Brad Pitt",
+            "Morgan Freeman",
+            "Kevin Spacey"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Toy Story",
+        "rating": 8,
+        "genre": "animation",
+        "actors": [
+            "Tom Hanks",
+            "Wallace Shawn"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Get Out",
+        "rating": 8,
+        "genre": "horror",
+        "actors": [
+            "Daniel Kaluuya"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Groundhog Day",
+        "rating": 7,
+        "genre": "comedy",
+        "actors": [
+            "Bill Murray",
+            "Andie MacDowell"
+        ]
+    }
+
+]

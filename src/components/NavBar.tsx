@@ -1,5 +1,5 @@
 type ChildrenProps = {
-    children: string
+    children?: JSX.Element|JSX.Element[];
 }
 
 export const NavBar = (children: ChildrenProps) => {
