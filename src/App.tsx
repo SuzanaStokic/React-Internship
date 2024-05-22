@@ -38,7 +38,7 @@ const App = () => {
         <>
             <NavBar>
                 <Menu favorites={favorites} onToggle={handleAddToFavorites}/>
-                <Search query={query} setQuery={setQuery} />
+                <Search allData={query} setFunction={setQuery} />
                 
             </NavBar> 
 

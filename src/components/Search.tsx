@@ -1,18 +1,20 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
+import { MovieInfo } from "../interface/MovieInfo";
 
-interface SearchProps {
-    query: string;
-    setQuery: (query: string) => void;
+type SearchProps = {
+    allData: string;
+    // setQuery: (query: string) => void;
+    setFunction: (query: string) => void;
 }
 
-const Search = ({ query, setQuery }: SearchProps)=> {
+const Search = ({ allData, setFunction }: SearchProps)=> {
     const inputQuery = useRef(null);
 
     return (
         <input className="search" 
             type="text" placeholder="Search" 
-            value={query} 
-            onChange={(e) => setQuery(e.target.value)} 
+            value={allData} 
+            onChange={(e) => setFunction(e.target.value)} 
             ref={inputQuery}
         />
     );
