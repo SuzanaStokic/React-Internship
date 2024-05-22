@@ -1,45 +1,55 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { MovieInfo } from "../interface/MovieInfo";
+
+import MoviesJSON from "../movies.json";
 
 type DetailProps = {
     selectedId: number;
-    onAddToFavorites: (movie: MovieInfo) => void;
+    onAddToFavorites: any;
+    onClose: any;
+    movies: MovieInfo[];
 }
 
-export const MovieDetail = (props: DetailProps) => {
+export const MovieDetail = ({selectedId, onAddToFavorites, onClose, movies}: DetailProps) => {
     const [movie, setMovie] = useState<MovieInfo | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [movieList, setMovieList] = useState(MoviesJSON);
+    
+    const array = movieList.filter((movie) => movie.id === selectedId);
+
+    const actorsArray: Array<string> = [];
+    movie?.actors.forEach((actor) => actorsArray.push(actor));
 
     const handleAdd = () => {
         const newFavorite: MovieInfo = {
-            id: props.selectedId, 
-            title: movie?.title || "", 
+            id: selectedId, 
+            title : movie?.title || "", 
             rating: movie?.rating || 0,
             genre: movie?.genre || "",
             actors: movie?.actors || [],
         };
-        props.onAddToFavorites(newFavorite);
+        onAddToFavorites(newFavorite);
+        onClose();
     };
 
-    // useEffect(() => {
-    //     async function getMovieDetails() {
-    //         setIsLoading(true);
-    //         try {
-    //             const res = await fetch(`https://api.themoviedb.org/3/movie/${props.selectedId}?api_key=5ba8de1f2182100ce656243dab6464ae`);
-    //             const data: MovieInfo = await res.json();
-    //             setMovie(data);
-    //         } catch(error) {
-    //             console.error('Failed to fetch movie detail', error);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     }
-    //     if(props.selectedId) {
-    //         getMovieDetails();
-    //     }
-    // }, [props.selectedId]);
-
     return (
-        <></>
+        <>
+            {array.map((movie) => {
+                return (
+                    <div className="box" key={movie.id}>
+                        <strong>{movie.title}</strong>
+                        <p>{movie?.genre}</p>
+                        <p>{movie?.rating} IMDb rating</p>
+                        {movie.actors?.map((data, index) => {
+                            return (
+                                <div key={index}>
+                                    {data}
+                                </div>
+                            )
+                        })}
+                    </div>
+                )
+            })}
+        </>
     );
 }

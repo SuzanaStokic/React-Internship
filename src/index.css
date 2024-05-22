@@ -13,22 +13,74 @@ code {
 .nav-bar {
   display: flex;
   justify-content: flex-end;
-  height: 20vh;
-  background-color: lightgray;
+  height: 10vh;
+  background-color: rgb(221, 214, 214);
+  position: relative;
 }
 
 .search {
-  margin-top: 20px;
-  margin-right: 10px;
-  height: 8vh;
-  width: 60vh;
+  margin-top: 12px;
+  margin-right: 30px;
+  height: 5vh;
+  width: 40vh;
   text-align: start;
   padding-left: 10px;
   border: 1px solid;
   border-radius: 5px;
   border-color: grey;
+
   background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
   background-repeat: no-repeat;
   background-position: right center;
   background-size: 30px;
 }
+
+.dropbtn {
+  background-color: #ece2fb;
+  color: black;
+  padding: 10px 30px;
+  margin: 12px;
+  font-size: 16px;
+  border: 1px solid rgb(149, 148, 148);
+  border-radius: 5px;
+
+}
+
+.dropdown {
+  margin-right: auto;
+  /* position: absolute;
+  left: 0; */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #c6bfd4;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  background-color: #c6bfd4;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  margin-left: 10px;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #c6bfd4;
+}
+
+.btn-toggle {}

@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import {Main} from "./components/Main";
-import {ListMovie} from "./components/ListMovie";
 
 import { MovieInfo } from "./interface/MovieInfo";
 
@@ -10,45 +9,58 @@ import { FavoriteMovies } from "./components/FavoriteMovies";
 import { MovieDetail } from "./components/MovieDetail";
 import { NavBar } from "./components/NavBar";
 import Search from "./components/Search";
+import Menu from "./components/Menu";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import Modal from "./components/Modal";
+import Homepage from './pages/Homepage';
+import ListMovie from "./components/ListMovie";
 
-const App: React.FC = () => {
-    const [query, setQuery] = useState<string>("");
+const App = () => {
+    const [query, setQuery] = useState("");
     const [selectedId, setSelectedId] = useState<number>(1);
-    const [favorite, setFavorite] = useState<MovieInfo[]>([]);
+    const [favorites, setFavorites] = useState<MovieInfo[]>([]);
     //const {movies, isLoading, error} = useMovies(query);
     const [movies, setMovies] = useState(MoviesJSON);
 
     function handleAddToFavorites(movie: MovieInfo) {
-        setFavorite((favorite) => [...favorite, movie]);
+        setFavorites((favorites) => [...favorites, movie]);
     }
 
+    function handleToggleSelectMovie(id: any) {
+        setSelectedId((selectedId) => (id === selectedId ? null : id));
+    }
+
+    function handleCloseMovie() {
+        setSelectedId(1);
+    }
 
     return (
         <>
             <NavBar>
-                <Search query={query} setQuery={setQuery} /> 
+                <Menu favorites={favorites} onToggle={handleAddToFavorites}/>
+                <Search query={query} setQuery={setQuery} />
+                
             </NavBar> 
 
-            {MoviesJSON && MoviesJSON.map(movie => {
-            return (
-                <div className="box" key={movie.id}>
-                    <strong>{movie.title}</strong>
-                    {movie.actors?.map((data, index) => {
-                        return (
-                            <div key={index}>
-                                {data}
-                            </div>
-                        )
-                    })}
-                </div>
-            )
-        })}
-
             <Main>
-                <ListMovie movies={movies}></ListMovie>
-                <FavoriteMovies favorite={favorite} /> 
-                <MovieDetail selectedId={selectedId} onAddToFavorites={handleAddToFavorites}/>
+                <ListMovie movies={movies} onSelect={handleToggleSelectMovie}/>
+
+                    <Modal>
+                        {selectedId ? (
+                            <MovieDetail movies={movies} selectedId={selectedId} onAddToFavorites={handleAddToFavorites} onClose={handleCloseMovie}/>
+                        ) : (
+                            <Menu favorites={favorites} onToggle={handleAddToFavorites}/>
+                        )}
+                    </Modal>
+                
+
             </Main>
+            {/* <BrowserRouter>
+                <Routes>
+                    <Route index element={<Homepage />} />
+                    <Route path="product" element={<FavoriteMovies favorites={favorites} onToggle={handleAddToFavorites}/>} />
+                </Routes>
+            </BrowserRouter> */}
         </>
     )
 }
