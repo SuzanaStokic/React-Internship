@@ -4,4 +4,9 @@ export interface MovieInfo {
     rating: number;
     genre: string;
     actors: string[];
+    poster: string;
+    overview: string;
+    releaseDate: string;
+    director: string;
+    screenwriters: string;
 }

@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 import {Main} from "./components/Main";
 
@@ -10,50 +9,57 @@ import { MovieDetail } from "./components/MovieDetail";
 import { NavBar } from "./components/NavBar";
 import Search from "./components/Search";
 import Menu from "./components/Menu";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import Modal from "./components/Modal";
-import Homepage from './pages/Homepage';
 import ListMovie from "./components/ListMovie";
+import OpenDetail from "./components/OpenDetail";
+import useStorage from "./hooks/useStorage";
+import { useState } from "react";
+import Window from "./components/Window";
 
 const App = () => {
     const [query, setQuery] = useState("");
-    const [selectedId, setSelectedId] = useState<number>(1);
-    const [favorites, setFavorites] = useState<MovieInfo[]>([]);
-    //const {movies, isLoading, error} = useMovies(query);
+    const [selectedId, setSelectedId] = useState(null);
+    const [favorites, setFavorites] = useStorage();
     const [movies, setMovies] = useState(MoviesJSON);
 
-    function handleAddToFavorites(movie: MovieInfo) {
+    const handleAddToFavorites = (movie: MovieInfo) => {
         setFavorites((favorites) => [...favorites, movie]);
     }
 
-    function handleToggleSelectMovie(id: any) {
+    const handleDeleteFromFavorites = (id: any) => {
+        setFavorites((favorites) => favorites.filter((movie) => movie.id !== id));
+    }
+
+    const handleToggleSelectMovie = (id: any) => {
         setSelectedId((selectedId) => (id === selectedId ? null : id));
     }
 
-    function handleCloseMovie() {
-        setSelectedId(1);
+    const handleCloseMovie = () => {
+        setSelectedId(null);
     }
 
     return (
         <>
             <NavBar>
-                <Menu favorites={favorites} onToggle={handleAddToFavorites}/>
+                {/* <Menu favorites={favorites} onToggle={handleAddToFavorites}/> */}
                 <Search allData={query} setFunction={setQuery} />
-                
             </NavBar> 
 
             <Main>
-                <ListMovie movies={movies} onSelect={handleToggleSelectMovie}/>
+                <Window text="Popular movies">
+                    <ListMovie movies={movies} onSelect={handleToggleSelectMovie}/>
+                </Window>
 
-                    <Modal>
-                        {selectedId ? (
-                            <MovieDetail movies={movies} selectedId={selectedId} onAddToFavorites={handleAddToFavorites} onClose={handleCloseMovie}/>
-                        ) : (
-                            <Menu favorites={favorites} onToggle={handleAddToFavorites}/>
-                        )}
-                    </Modal>
-                
+                <Window text="Favorite movies">
+                    <FavoriteMovies favorites={favorites} onToggle={handleDeleteFromFavorites}>Favorite movies</FavoriteMovies>  
+                </Window>
 
+                <OpenDetail onClose={handleCloseMovie}>
+                    {selectedId ? (
+                        <MovieDetail selectedId={selectedId} onAddToFavorites={handleAddToFavorites} favorites={favorites}/>
+                    ) : (
+                        <></>  
+                    )}
+                </OpenDetail>
             </Main>
             {/* <BrowserRouter>
                 <Routes>

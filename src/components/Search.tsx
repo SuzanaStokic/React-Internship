@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { MovieInfo } from "../interface/MovieInfo";
 
 type SearchProps = {
     allData: string;

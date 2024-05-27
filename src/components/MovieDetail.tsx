@@ -4,52 +4,92 @@ import { MovieInfo } from "../interface/MovieInfo";
 import MoviesJSON from "../movies.json";
 
 type DetailProps = {
-    selectedId: number;
+    selectedId: any;
     onAddToFavorites: any;
-    onClose: any;
-    movies: MovieInfo[];
+    favorites: any;
 }
 
-export const MovieDetail = ({selectedId, onAddToFavorites, onClose, movies}: DetailProps) => {
+export const MovieDetail = ({selectedId, onAddToFavorites, favorites}: DetailProps) => {
     const [movie, setMovie] = useState<MovieInfo | null>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [movieList, setMovieList] = useState(MoviesJSON);
     
-    const array = movieList.filter((movie) => movie.id === selectedId);
+    const array = movieList.map((movie) => movie.id).includes(selectedId);
+    const filtered = movieList.filter((movie) => movie.id === selectedId);
 
-    const actorsArray: Array<string> = [];
-    movie?.actors.forEach((actor) => actorsArray.push(actor));
+    // const handleAdd = () => {
+    //     onAddToFavorites();
+    // }
 
     const handleAdd = () => {
         const newFavorite: MovieInfo = {
             id: selectedId, 
+            poster: movie?.poster || "",
             title : movie?.title || "", 
+            releaseDate: movie?.releaseDate || "",
             rating: movie?.rating || 0,
+            overview: movie?.overview || "",
             genre: movie?.genre || "",
             actors: movie?.actors || [],
+            director: movie?.director || "",
+            screenwriters: movie?.screenwriters || "",
         };
         onAddToFavorites(newFavorite);
-        onClose();
     };
 
     return (
         <>
-            {array.map((movie) => {
+            {array ? ( filtered.map((movie) => {
                 return (
-                    <div className="box" key={movie.id}>
-                        <strong>{movie.title}</strong>
-                        <p>{movie?.genre}</p>
-                        <p>{movie?.rating} IMDb rating</p>
-                        {movie.actors?.map((data, index) => {
-                            return (
-                                <div key={index}>
-                                    {data}
+                    <div className="container" key={movie.id}>
+                        <div className="top">
+                            <div className="title-rating">
+                                <h1 className="title"><span>{movie.title} </span>({movie.releaseDate})<span></span></h1>
+                                <p>⭐{movie.rating}</p>
+                            </div>
+                            <div className="genre">
+                                <p>{movie.genre}</p>
+                            </div>
+                        </div>
+                        <div className="movie">
+                            <div className="movie-img">
+                                <img src={movie.poster}  alt={`${movie.title} poster`} className="image"/>
+                            </div>
+                            <div className="movie-description">
+                                <h3 className="about-movie">About the movie</h3>
+                                <p className="movie-text">{movie.overview}</p>
+                                <div className="credits">
+                                    <div className="actors">
+                                        <h3>Actors</h3>
+                                        <div className="actor">
+                                            {movie.actors?.map((data, index) => {
+                                                return (
+                                                    <div key={index}>
+                                                        {data}
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+                                    <div className="directors">
+                            <h3>Director</h3>
+                            <div className="director">
+                                {movie.director}
+                            </div>
+                        </div>
+                        <div className="screenwriters">
+                            <h3>Screenwriter</h3>
+                            <div className="screenwriter">
+                                {movie.screenwriters}
+                            </div>
+                        </div>
                                 </div>
-                            )
-                        })}
+                            </div>        
+                        </div>
+                        <button className="btn btn-add" onClick={handleAdd}>Add movie to favorites</button>
                     </div>
-                )
-            })}
+            )})) : (
+                ""
+            )}
         </>
     );
 }
