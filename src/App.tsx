@@ -8,18 +8,23 @@ import { FavoriteMovies } from "./components/FavoriteMovies";
 import { MovieDetail } from "./components/MovieDetail";
 import { NavBar } from "./components/NavBar";
 import Search from "./components/Search";
-import Menu from "./components/Menu";
 import ListMovie from "./components/ListMovie";
 import OpenDetail from "./components/OpenDetail";
 import useStorage from "./hooks/useStorage";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Window from "./components/Window";
 
 const App = () => {
-    const [query, setQuery] = useState("");
     const [selectedId, setSelectedId] = useState(null);
     const [favorites, setFavorites] = useStorage();
     const [movies, setMovies] = useState(MoviesJSON);
+
+    const [searchValue, setSearchValue] = useState("");
+
+    const handleSearch = useCallback((value: string) => {
+        console.log(value);
+        setSearchValue(value);
+    }, []);
 
     const handleAddToFavorites = (movie: MovieInfo) => {
         setFavorites((favorites) => [...favorites, movie]);
@@ -41,10 +46,12 @@ const App = () => {
         <>
             <NavBar>
                 {/* <Menu favorites={favorites} onToggle={handleAddToFavorites}/> */}
-                <Search allData={query} setFunction={setQuery} />
+                <Search onSearch={handleSearch}/>
+                {/* <p>{searchValue}</p> */}
             </NavBar> 
 
             <Main>
+            {/* {searchValue ? } */}
                 <Window text="Popular movies">
                     <ListMovie movies={movies} onSelect={handleToggleSelectMovie}/>
                 </Window>

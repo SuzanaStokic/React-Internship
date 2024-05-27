@@ -37,7 +37,7 @@ img {
   text-align: start;
   padding-left: 10px;
   border: 1px solid;
-  border-radius: 5px;
+  border-radius: 20px;
   border-color: grey;
 
   background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
@@ -177,7 +177,7 @@ img {
   font-size: 0.9rem;
 }
 
-.btn-add {
+.btn-movie {
   background-color: rgb(239, 229, 239);
   color: rgb(202, 93, 111);
   margin: 0rem 2rem;
@@ -187,19 +187,19 @@ img {
   border: 1px solid gray;
   border-radius: 8px;
 }
-.btn-add:hover {
+.btn-movie:hover {
   background-color: rgb(234, 212, 234);
 }
 
 @media (max-width: 680px) {
-  .btn-add {
+  .btn-movie {
     position: absolute;
     left: 30%;
   }
 }
 
 @media (max-width: 850px) {
-  .btn-add {
+  .btn-movie {
     position: absolute;
     left: 35%;
   }

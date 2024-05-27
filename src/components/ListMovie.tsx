@@ -14,6 +14,7 @@ const ListMovie = (props: ListProps) => {
                 <>
                 <div>{movie.id}</div>
                 <Movie movie={movie} key={movie.id} onSelect={props.onSelect}/>
+                {/* {movie.actors.map((actor, index) => <li key={index}>{actor}</li>)} */}
                 </>
             ))}
         </ul>

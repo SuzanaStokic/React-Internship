@@ -32,7 +32,7 @@ export const FavoriteMovie = ({movie, onToggle}: FavoriteProps) => {
                     </p>
                 </div>        
             </div>
-            <button className="btn btn-delete" onClick={() => onToggle(movie.id)}>Delete from favorites</button>
+            <button className="btn btn-movie" onClick={() => onToggle(movie.id)}>Delete from favorites</button>
         </div>
     )
 } 

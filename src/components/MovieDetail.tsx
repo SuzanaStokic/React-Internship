@@ -85,7 +85,7 @@ export const MovieDetail = ({selectedId, onAddToFavorites, favorites}: DetailPro
                                 </div>
                             </div>        
                         </div>
-                        <button className="btn btn-add" onClick={handleAdd}>Add movie to favorites</button>
+                        <button className="btn btn-movie" onClick={handleAdd}>Add movie to favorites</button>
                     </div>
             )})) : (
                 ""
