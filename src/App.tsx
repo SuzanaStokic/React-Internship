@@ -17,7 +17,7 @@ import Window from "./components/Window";
 const App = () => {
     const [selectedId, setSelectedId] = useState(null);
     const [favorites, setFavorites] = useStorage();
-    const [movies, setMovies] = useState(MoviesJSON);
+    const movies = MoviesJSON;
 
     const [searchValue, setSearchValue] = useState("");
 
@@ -42,12 +42,31 @@ const App = () => {
         setSelectedId(null);
     }
 
+    // const handleToggle = (movie: MovieInfo) => {
+    //     if (favorites.some(fav => fav.id === movie.id)) {
+    //         setFavorites((favorites) => favorites.filter((movie) => movie.id !== id));
+    //     } else {
+    //       setFavorites([...favorites, movie]);
+    //     }
+    //   };
+    //   const handleAdd = (movie: MovieInfo) => {
+    //     if (!favorites.some(fav => fav.id === movie.id)) {
+    //       setFavorites([...favorites, movie]);
+    //     }
+    //   };
+
+    const selectedMovie = movies.find((movie) => movie.id === selectedId) || null;
+
     return (
-        <>
+        <div>
             <NavBar>
-                {/* <Menu favorites={favorites} onToggle={handleAddToFavorites}/> */}
-                <Search onSearch={handleSearch}/>
-                {/* <p>{searchValue}</p> */}
+                <>
+                    {/* <Menu favorites={favorites} onToggle={handleAddToFavorites}/> */}
+                    <Search/>
+                    {/* {movies.map((film) => (
+                        <><p>{film.title}</p><p>{film.genre}</p></>
+                    ))} */}
+                </>
             </NavBar> 
 
             <Main>
@@ -57,15 +76,11 @@ const App = () => {
                 </Window>
 
                 <Window text="Favorite movies">
-                    <FavoriteMovies favorites={favorites} onToggle={handleDeleteFromFavorites}>Favorite movies</FavoriteMovies>  
+                    <FavoriteMovies favorites={favorites} onToggle={handleDeleteFromFavorites} onSelect={handleToggleSelectMovie}>Favorite movies</FavoriteMovies>  
                 </Window>
 
-                <OpenDetail onClose={handleCloseMovie}>
-                    {selectedId ? (
-                        <MovieDetail selectedId={selectedId} onAddToFavorites={handleAddToFavorites} favorites={favorites}/>
-                    ) : (
-                        <></>  
-                    )}
+                <OpenDetail onClose={handleCloseMovie} selectedId={selectedId}>
+                    <MovieDetail movie={selectedMovie} favorites={favorites} selectedId={selectedId} onAddToFavorites={handleAddToFavorites}/>
                 </OpenDetail>
             </Main>
             {/* <BrowserRouter>
@@ -74,7 +89,7 @@ const App = () => {
                     <Route path="product" element={<FavoriteMovies favorites={favorites} onToggle={handleAddToFavorites}/>} />
                 </Routes>
             </BrowserRouter> */}
-        </>
+        </div>
     )
 }
 

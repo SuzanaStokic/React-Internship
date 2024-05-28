@@ -4,30 +4,32 @@ import TextCollapse from "./TextCollapse";
 type FavoriteProps = {
     movie: MovieInfo;
     onToggle: any;
+    onSelect?:any;
 } 
 
-export const FavoriteMovie = ({movie, onToggle}: FavoriteProps) => {
+export const FavoriteMovie = ({movie, onToggle, onSelect}: FavoriteProps) => {
 
     return (
-        <div className="container">
-            <div>{movie.id}</div>
-            <div className="top">
-                <div className="title-rating">
-                    <h1 className="title"><span>{movie.title} </span>({movie.releaseDate})<span></span></h1>
+        <div className="container-overview" onClick={() => onSelect(movie.id)}>
+            <div className="top-overview">
+                <div className="title-rating-overview">
+                    <h1 className="title-overview"><span>{movie.title} </span><span>({movie.releaseDate})</span></h1>
                     <p>⭐{movie.rating}</p>
                 </div>
-                <div className="genre">
+                <div className="genre-overview">
                     <p>{movie.genre}</p>
                 </div>
             </div>
-            <div className="movie">
-                <div className="movie-img">
+            <div className="movie-overview">
+                <div className="movie-img-overview">
                     <img src={movie.poster}  alt={`${movie.title} poster`} className="image"/>
                 </div>
-                <div className="movie-description">
-                    <p className="movie-text">
+
+                <div className="movie-description-overview">
+                    {/* <h3 className="about-movie">About the movie</h3> */}
+                    <p className="movie-text-overview">
                         <TextCollapse 
-                            collapsedNumOfWords={15}
+                            collapsedNumOfWords={10}
                         >{movie.overview}</TextCollapse>
                     </p>
                 </div>        

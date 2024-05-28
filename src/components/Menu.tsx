@@ -14,7 +14,7 @@ const Menu = (props: MenuProps) => {
             <button className="dropbtn">Menu</button>
             <div className="dropdown-content">
                 {/* <li><NavLink to="favorites">Favorites</NavLink></li> */}
-                <FavoriteMovies favorites={props.favorites} onToggle={props.onToggle}>Favorite movies</FavoriteMovies>  
+                {/* <FavoriteMovies favorites={props.favorites} onToggle={props.onToggle}>Favorite movies</FavoriteMovies>   */}
             </div>
         </div>
         </>

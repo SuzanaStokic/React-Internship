@@ -4,21 +4,20 @@ import { MovieInfo } from "../interface/MovieInfo";
 import MoviesJSON from "../movies.json";
 
 type DetailProps = {
+    movie: MovieInfo | null;
+    favorites: MovieInfo[];
     selectedId: any;
     onAddToFavorites: any;
-    favorites: any;
+    // favorites: any;
 }
 
-export const MovieDetail = ({selectedId, onAddToFavorites, favorites}: DetailProps) => {
-    const [movie, setMovie] = useState<MovieInfo | null>(null);
-    const [movieList, setMovieList] = useState(MoviesJSON);
+export const MovieDetail = ({movie, favorites, selectedId, onAddToFavorites}: DetailProps) => {
+    // const [movie, setMovie] = useState<MovieInfo | null>(null);
+    const movieList = MoviesJSON;
     
     const array = movieList.map((movie) => movie.id).includes(selectedId);
     const filtered = movieList.filter((movie) => movie.id === selectedId);
 
-    // const handleAdd = () => {
-    //     onAddToFavorites();
-    // }
 
     const handleAdd = () => {
         const newFavorite: MovieInfo = {
@@ -40,6 +39,7 @@ export const MovieDetail = ({selectedId, onAddToFavorites, favorites}: DetailPro
         <>
             {array ? ( filtered.map((movie) => {
                 return (
+                
                     <div className="container" key={movie.id}>
                         <div className="top">
                             <div className="title-rating">
@@ -85,6 +85,10 @@ export const MovieDetail = ({selectedId, onAddToFavorites, favorites}: DetailPro
                                 </div>
                             </div>        
                         </div>
+                        {/* {favorites.some(fav => fav.id === movie.id) ? 
+                            <button className="btn btn-movie" onClick={() => onTogg(movie.id)}>Delete from favorites</button> :
+                            <button className="btn btn-movie" onClick={() => onAddToFavorites(movie.id)}>Add movie to favorites</button>
+                        } */}
                         <button className="btn btn-movie" onClick={handleAdd}>Add movie to favorites</button>
                     </div>
             )})) : (
