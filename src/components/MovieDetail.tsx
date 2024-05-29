@@ -1,19 +1,21 @@
 import { useState } from "react"
 import { MovieInfo } from "../interface/MovieInfo";
 
-import MoviesJSON from "../movies.json";
+// import MoviesJSON from "../public/movies.json";
 
 type DetailProps = {
     movie: MovieInfo | null;
-    favorites: MovieInfo[];
+    // favorites: MovieInfo[];
     selectedId: any;
     onAddToFavorites: any;
+    movieList: MovieInfo[];
+    onClose: any;
     // favorites: any;
 }
 
-export const MovieDetail = ({movie, favorites, selectedId, onAddToFavorites}: DetailProps) => {
+export const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: DetailProps) => {
     // const [movie, setMovie] = useState<MovieInfo | null>(null);
-    const movieList = MoviesJSON;
+    // const movieList = MoviesJSON;
     
     const array = movieList.map((movie) => movie.id).includes(selectedId);
     const filtered = movieList.filter((movie) => movie.id === selectedId);
@@ -33,6 +35,7 @@ export const MovieDetail = ({movie, favorites, selectedId, onAddToFavorites}: De
             screenwriters: movie?.screenwriters || "",
         };
         onAddToFavorites(newFavorite);
+        onClose();
     };
 
     return (
