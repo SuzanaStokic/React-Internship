@@ -1,4 +1,4 @@
-import { MovieInfo } from "../interface/MovieInfo";
+import MovieInfo from "../interface/MovieInfo";
 import TextCollapse from "./TextCollapse";
 
 type FavoriteProps = {
@@ -7,7 +7,7 @@ type FavoriteProps = {
     onSelect?:any;
 } 
 
-export const FavoriteMovie = ({movie, onToggle, onSelect}: FavoriteProps) => {
+const FavoriteMovie = ({movie, onToggle, onSelect}: FavoriteProps) => {
 
     return (
         <div className="container-overview" onClick={() => onSelect(movie.id)}>
@@ -38,3 +38,4 @@ export const FavoriteMovie = ({movie, onToggle, onSelect}: FavoriteProps) => {
         </div>
     )
 } 
+export default FavoriteMovie;

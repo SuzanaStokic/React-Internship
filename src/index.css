@@ -1,3 +1,54 @@
+/* :root {
+  --text-primary-color: rgb(202, 93, 111);
+  --container-bg: #fff; 
+  --box-shadow: #6f454b50;
+  --navbar-detailbg: #a5a2aa;
+  --border: gray;
+  --body-bg: rgb(237, 233, 239);
+  --movie-btn: rgb(239, 229, 239);
+  --movie-btn-hv: rgb(234, 212, 234);
+}
+
+.dark-mode {
+  --pink-color: black;
+  --container-bg: ;
+  --box-shadow: #6f454b50;
+  --navbar-detailbg: #a5a2aa;
+  --border: gray;
+  --body-bg: rgb(34, 40, 43);
+  --movie-btn: rgb(239, 229, 239);
+  --movie-btn-hv: rgb(234, 212, 234); */
+
+
+:root {
+  --primary-color: rgb(34, 40, 43);
+  --background-color: rgb(236, 234, 236);
+  --container-bg: white;
+  --navbar-bg-color: #a5a2aa;
+
+  --text-primary-color: rgb(202, 93, 111);
+  --text-secondary-color: rgb(108, 117, 125);
+  --movie-btn: rgb(239, 229, 239);
+  --movie-btn-hv: rgb(234, 212, 234);
+  --box-shadow: #6f454b50;
+  --border: gray;
+}
+
+.dark-mode {
+  --primary-color: white;
+  --background-color: rgb(50, 48, 50);
+  --container-bg: gray;
+  --navbar-bg-color: #575759;
+
+  --text-primary-color: rgb(237, 233, 239);
+  --text-secondary-color: rgb(173, 181, 189);
+  --movie-btn: rgb(239, 229, 239);
+  --movie-btn-hv: rgb(234, 212, 234);
+  --box-shadow: #6f454b50;
+  --border: gray;
+}
+
+
 * {
   padding: 0;
   margin: 0;
@@ -5,8 +56,8 @@
 }
 
 body {
-  background-color: rgb(237, 233, 239);
-  color: black;
+  background-color: var(--background-color);
+  color: var(--primary-color);
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.4;
@@ -21,34 +72,18 @@ img {
   display: block;
 }
 ul {
-  /* display: flex;
-  flex-direction: row; */
-  /* gap: var(--size-3); */
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 270px;
   overflow-x: scroll;
   width: 100%;
-
-  /* display: flex;
-  flex-direction: row; */
-  /* list-style-type: none; */
-  /* padding: 0; */
-  /* display: grid;
-  grid-template-rows: repeat(auto-fit, 1fr);
-  gap: 10px; */
-}
-
-.main {
-  /* display: flex;
-  flex-direction: row; */
 }
 
 .nav-bar {
   display: flex;
   justify-content: flex-start;
   height: 10vh;
-  background-color: #a5a2aa;
+  background-color: var(--navbar-bg-color);
   position: relative;
 }
 
@@ -61,7 +96,7 @@ ul {
   padding-left: 20px;
   border: 1px solid;
   border-radius: 20px;
-  border-color: grey;
+  border-color: var(--border);
 
   background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
   background-repeat: no-repeat;
@@ -70,77 +105,28 @@ ul {
   background-size: 30px;
 }
 
-/* .dropbtn {
-  background-color: #bfbcc5;
-  color: black;
-  padding: 10px 30px;
-  margin: 12px 20px;
-  font-size: 16px;
-  border: 1px solid rgb(149, 148, 148);
-  border-radius: 5px;
-
-}
-
- .dropdown {
-  margin-right: auto;
-  /* position: absolute;
-  left: 0;
- }
-
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #bfbcc5;
-  min-width: 140px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  border: 1px solid gray;
-  border-radius: 5px;
-}
-
-.dropdown-content a {
-  color: black;
-  background-color: #bfbcc5;
-  padding: 10px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-  margin-left: 10px;
-}  */
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-/* .dropdown:hover .dropbtn {
-  background-color: #bfbcc5;
-} */
-
 .container {
   place-content: center;
-  background-color: #fff;
+  background-color: var(--container-bg);
   padding: 2rem;
   margin: 0.5rem;
-  box-shadow: 0 10px 20px 5px #6f454b50;
+  box-shadow: 0 10px 20px 5px var(--box-shadow);
 }
 
 .container-overview {
   place-content: center;
-  background-color: #fff;
+  background-color: var(--container-bg);
   padding: 1.3rem 1.7rem;
   margin: 0.5rem;
-  box-shadow: 0 10px 20px 5px #6f454b50;
+  box-shadow: 0 10px 20px 5px var(--box-shadow);
 }
 
 .search-container {
   place-content: center;
-  background-color: #fff;
+  background-color: var(--container-bg);
   padding: 2rem;
   margin: 2rem;
-  box-shadow: 0 10px 20px 5px #6f454b50;
+  box-shadow: 0 10px 20px 5px var(--box-shadow);
 }
 
 .top {
@@ -170,12 +156,10 @@ ul {
 }
 
 .top .title-rating p {
-  color: #2d2c2c;
   font-size: 1.15rem;
 }
 
 .top-overview .title-rating-overview p {
-  color: #2d2c2c;
   font-size: 1rem;
 }
 
@@ -184,13 +168,13 @@ ul {
 }
 
 .top .genre {
-  color: rgb(202, 93, 111);
+  color: var(--text-primary-color);
   font-weight: 600;
   margin-top: 0.5rem;
 }
 
 .top-overview .genre-overview {
-  color: rgb(202, 93, 111);
+  color: var(--text-primary-color);
   font-weight: 600;
   font-size: 14px;
   margin: 0.7rem 0rem;
@@ -235,7 +219,7 @@ ul {
 .movie-description 
 .credits 
 .actor {
-  color: rgb(202, 93, 111);
+  color: var(--text-primary-color);
   margin-bottom: 3rem;
   margin-top: 0.5rem;
   font-size: 0.9rem;
@@ -244,7 +228,7 @@ ul {
 .movie-description 
 .credits 
 .director {
-  color: rgb(202, 93, 111);
+  color: var(--text-primary-color);
   margin-bottom: 3rem;
   margin-top: 0.5rem;
   font-size: 0.9rem;
@@ -253,29 +237,29 @@ ul {
 .movie-description 
 .credits 
 .screenwriter {
-  color: rgb(202, 93, 111);
+  color: var(--text-primary-color);
   margin-bottom: 3rem;
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
 
 .btn-movie {
-  background-color: rgb(239, 229, 239);
-  color: rgb(202, 93, 111);
+  background-color: var(--movie-btn);
+  color: var(--text-primary-color);
   margin: -1rem 0rem;
   display: flex;
   justify-content: center;
   padding: 10px 10px;
-  border: 1px solid gray;
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 .btn-movie:hover {
-  background-color: rgb(234, 212, 234);
+  background-color: var(--movie-btn-hv);
 }
 
 .myModal {
   position: fixed;
-  background-color: grey;
+  background-color: var(--navbar-bg-color);
   top: 0;
   left: 0;
   width: 100%;
@@ -291,20 +275,27 @@ ul {
 }
 
 .btn-modal {
-  color: #aaaaaa;
+  color: var(--navbar-bg-color);
   background: none;
   border: none;
   position: fixed;
   right: 25px;
   font-size: 28px;
   font-weight: bold;
- /* transform: translate(26.8rem, -0.1rem); */
- /* transform: translate(35rem, 0rem); */
 }
 .btn-modal:hover,
 .btn-modal:focus {
   color: #000;
   cursor: pointer;
+}
+
+.btn-dark {
+  position: absolute;
+  right: 0px;
+  background-color: var(--navbar-bg-color);
+  border: none;
+  padding: 10px;
+  transform: scale(1.5);
 }
 
 .window {
@@ -317,16 +308,6 @@ ul {
 .window h2 {
   margin: 2rem 0rem 1rem 2rem;
 }
-
-/* .list .list-movies {
-  display: flex;
-  flex-direction: rows; */
-  /* list-style-type: none;
-  padding: 0; */
-  /* display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 10px; 
-  }*/
 
 @media (min-width: 500px) {
   .btn-movie {

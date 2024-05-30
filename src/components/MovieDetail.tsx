@@ -1,5 +1,4 @@
-import { useState } from "react"
-import { MovieInfo } from "../interface/MovieInfo";
+import MovieInfo from "../interface/MovieInfo";
 
 // import MoviesJSON from "../public/movies.json";
 
@@ -13,7 +12,7 @@ type DetailProps = {
     // favorites: any;
 }
 
-export const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: DetailProps) => {
+const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: DetailProps) => {
     // const [movie, setMovie] = useState<MovieInfo | null>(null);
     // const movieList = MoviesJSON;
     
@@ -100,3 +99,4 @@ export const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onC
         </>
     );
 }
+export default MovieDetail;

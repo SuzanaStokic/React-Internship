@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MovieInfo } from "../interface/MovieInfo";
+import MovieInfo from "../interface/MovieInfo";
 
 const useStorage = (): [MovieInfo[], React.Dispatch<React.SetStateAction<MovieInfo[]>>] => {
     const [favorites, setFavorites] = useState<MovieInfo[]>(() => {

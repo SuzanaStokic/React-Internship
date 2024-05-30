@@ -2,8 +2,9 @@ type ChildrenProps = {
     children?: JSX.Element|JSX.Element[];
 }
 
-export const Main = ({children} : ChildrenProps) => {
+const Main = ({children} : ChildrenProps) => {
     return (
         <main className="main">{children}</main>
     );
 }
+export default Main;

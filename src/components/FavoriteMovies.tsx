@@ -1,5 +1,5 @@
-import { MovieInfo } from "../interface/MovieInfo";
-import {FavoriteMovie} from "./FavoriteMovie";
+import MovieInfo from "../interface/MovieInfo";
+import FavoriteMovie from "./FavoriteMovie";
 
 
 type FavoritesProps = {
@@ -9,7 +9,7 @@ type FavoritesProps = {
     onSelect: any;
 }
 
-export const FavoriteMovies = (props: FavoritesProps) => {
+const FavoriteMovies = (props: FavoritesProps) => {
 
 
     return (
@@ -22,3 +22,4 @@ export const FavoriteMovies = (props: FavoritesProps) => {
     )
     
 }
+export default FavoriteMovies;

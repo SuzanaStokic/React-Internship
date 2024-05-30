@@ -1,4 +1,4 @@
-export interface MovieInfo {
+export default interface MovieInfo {
     id: number;
     title: string;
     rating: number;

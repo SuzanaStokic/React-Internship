@@ -1,4 +1,4 @@
-import { MovieInfo } from '../interface/MovieInfo';
+import MovieInfo from '../interface/MovieInfo';
 import Movie from "./Movie";
 
 type ListProps = {
