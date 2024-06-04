@@ -1,7 +1,5 @@
 import MovieInfo from "../interface/MovieInfo";
 
-// import MoviesJSON from "../public/movies.json";
-
 type DetailProps = {
     movie: MovieInfo | null;
     selectedId: any;
@@ -82,10 +80,6 @@ const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: 
                                 </div>
                             </div>        
                         </div>
-                        {/* {favorite ? 
-                            <button className="btn btn-movie" onClick={() => onToggle(movie.id)}>Delete from favorites</button> :
-                            <button className="btn btn-movie" onClick={() => onAddToFavorites(movie.id)}>Add movie to favorites</button>
-                        } */}
                         <button className="btn btn-movie" onClick={handleAdd}>Add movie to favorites</button>
                     </div>
             )})) : (

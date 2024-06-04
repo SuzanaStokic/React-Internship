@@ -23,17 +23,13 @@ const App = () => {
     const {movies} = useFetchMovies();
 
     const selectedMovie = movies.find((movie) => movie.id === selectedId) || null;
-    const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
-    const filteredByActors = movies.filter(movie => movie.actors.find((actor) => actor.toLowerCase().includes(query.toLowerCase())));
 
-    const handleToggle = (movie: MovieInfo) => {
-        if(query === movie.title) {
-            return filteredMovies;
-        } else return filteredByActors;
-    }
-    // const res = movies.filter(movie => 
-    //     movie.title.toLowerCase().includes(query.toLowerCase()) ||
-    //     movie.actors.find((actor) => actor.toLowerCase().includes(query.toLowerCase())));
+    const filteredMovies = movies.filter(movie => 
+        movie.title.toLowerCase().includes(query.toLowerCase()) ||
+        movie.actors.find((actor) => actor.toLowerCase().includes(query.toLowerCase())) ||
+        movie.genre.toLowerCase().includes(query.toLowerCase()) ||
+        movie.releaseDate.includes(query)
+        );
 
 
     // const themeContext = useContext(ThemeContext);
@@ -41,12 +37,6 @@ const App = () => {
     // if(!themeContext) return null;
 
     // const {themeMode, switchThemeMode} = themeContext;
-
-    // const {themeMode, switchThemeMode} = useThemeContext();
-
-    // const toggleTheme = () => {
-    //     switchThemeMode(themeMode === IThemeMode.LIGHT ? IThemeMode.DARK : IThemeMode.LIGHT);
-    // }
 
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value);
@@ -75,17 +65,11 @@ const App = () => {
                 <Paper> */}
                         <NavBar>
                             <> 
-                                {/* <Search value={query} onQueryChange={handleSearch}/> */}
                                 <Search value={query} onQueryChange={handleSearch}/>
                                 {/* <button className="btn btn-dark" onClick={() => setDarkMode(!darkMode)}>
                                     {darkMode ? <LightMode style={{color: 'white'}} /> : <NightsStaySharp style={{color: 'rgb(86, 85, 85)'}}/> }
                                 </button> */}
-                                {/* <button className="btn btn-dark" onClick={() => setDarkMode(themeMode === IThemeMode.LIGHT ? IThemeMode.DARK : IThemeMode.LIGHT)}>
-                                    {themeMode ? <LightMode style={{color: 'white'}} /> : <NightsStaySharp style={{color: 'rgb(86, 85, 85)'}}/> }
-                                </button> */}
-                                {/* <button className="btn btn-dark" onClick={() => setDarkMode(!darkMode)}>
-                                    {darkMode ? <LightMode style={{color: 'white'}} /> : <NightsStaySharp style={{color: 'rgb(86, 85, 85)'}}/> }
-                                </button> */}
+    
                                 {/* <div>
                                     <h1>This app is using the {themeMode} mode</h1>
                                     <Button variant="contained" onClick={toggleTheme}>Toggle Theme</Button>
@@ -97,11 +81,8 @@ const App = () => {
                         <Main>
                             <>
                                 {query && filteredMovies.length > 0 ? (
-                                    <Results filtered={filteredMovies} filteredByActors={filteredByActors} onToggleMovie={handleToggle} />
+                                    <Results filtered={filteredMovies} />
                                 ) : (
-                                // {query && filteredMovies.length > 0 ? (
-                                //     <Results filtered={filteredMovies}/>
-                                // ) : (
                                     <>
                                         <Window text="Popular movies">
                                             <ListMovie movies={movies} onSelect={handleToggleSelectMovie}/>
