@@ -1,24 +1,44 @@
 /* :root {
+  --primary-color: rgb(34, 40, 43);
+  --background-color: rgb(236, 234, 236);
+  --container-bg: white;
+  --navbar-bg-color: #a5a2aa;
+
   --text-primary-color: rgb(202, 93, 111);
-  --container-bg: #fff; 
-  --box-shadow: #6f454b50;
-  --navbar-detailbg: #a5a2aa;
-  --border: gray;
-  --body-bg: rgb(237, 233, 239);
+  --text-secondary-color: rgb(108, 117, 125);
   --movie-btn: rgb(239, 229, 239);
   --movie-btn-hv: rgb(234, 212, 234);
+  --box-shadow: #6f454b50;
+  --border: gray;
+}
+
+.light-mode {
+  --primary-color: rgb(34, 40, 43);
+  --background-color: rgb(236, 234, 236);
+  --container-bg: white;
+  --navbar-bg-color: #a5a2aa;
+
+  --text-primary-color: rgb(202, 93, 111);
+  --text-secondary-color: rgb(108, 117, 125);
+  --movie-btn: rgb(239, 229, 239);
+  --movie-btn-hv: rgb(234, 212, 234);
+  --box-shadow: #6f454b50;
+  --border: gray;
 }
 
 .dark-mode {
-  --pink-color: black;
-  --container-bg: ;
-  --box-shadow: #6f454b50;
-  --navbar-detailbg: #a5a2aa;
-  --border: gray;
-  --body-bg: rgb(34, 40, 43);
-  --movie-btn: rgb(239, 229, 239);
-  --movie-btn-hv: rgb(234, 212, 234); */
-
+  --primary-color: rgb(210, 210, 210);          
+  --background-color: rgb(34, 34, 34);          
+  --container-bg: rgb(79, 78, 78);              
+  --navbar-bg-color: #3b3b3b;                   
+  
+  --text-primary-color: rgb(205, 200, 200);     
+  --text-secondary-color: rgb(187, 187, 187);   
+  --movie-btn: rgb(60, 60, 60);                 
+  --movie-btn-hv: rgb(70, 70, 70);              
+  --box-shadow: #00000050;                      
+  --border: rgb(100, 100, 100);  
+} */
 
 :root {
   --primary-color: rgb(34, 40, 43);
@@ -34,18 +54,32 @@
   --border: gray;
 }
 
-.dark-mode {
-  --primary-color: white;
-  --background-color: rgb(50, 48, 50);
-  --container-bg: gray;
-  --navbar-bg-color: #575759;
+.light-mode {
+  --primary-color: rgb(34, 40, 43);
+  --background-color: rgb(236, 234, 236);
+  --container-bg: white;
+  --navbar-bg-color: #a5a2aa;
 
-  --text-primary-color: rgb(237, 233, 239);
-  --text-secondary-color: rgb(173, 181, 189);
+  --text-primary-color: rgb(202, 93, 111);
+  --text-secondary-color: rgb(108, 117, 125);
   --movie-btn: rgb(239, 229, 239);
   --movie-btn-hv: rgb(234, 212, 234);
   --box-shadow: #6f454b50;
   --border: gray;
+}
+
+.dark-mode {
+  --primary-color: rgb(210, 210, 210);
+  --background-color: rgb(34, 34, 34);
+  --container-bg: rgb(79, 78, 78);
+  --navbar-bg-color: #3b3b3b;
+
+  --text-primary-color: rgb(205, 200, 200);
+  --text-secondary-color: rgb(187, 187, 187);
+  --movie-btn: rgb(60, 60, 60);
+  --movie-btn-hv: rgb(70, 70, 70);
+  --box-shadow: #00000050;
+  --border: rgb(100, 100, 100);
 }
 
 
@@ -117,6 +151,14 @@ ul {
   place-content: center;
   background-color: var(--container-bg);
   padding: 1.3rem 1.7rem;
+  margin: 0.5rem;
+  box-shadow: 0 10px 20px 5px var(--box-shadow);
+}
+
+.container-favorite {
+  place-content: center;
+  background-color: var(--container-bg);
+  padding: 1.5rem 1.7rem;
   margin: 0.5rem;
   box-shadow: 0 10px 20px 5px var(--box-shadow);
 }
@@ -246,7 +288,7 @@ ul {
 .btn-movie {
   background-color: var(--movie-btn);
   color: var(--text-primary-color);
-  margin: -1rem 0rem;
+  margin: -1rem 8rem;
   display: flex;
   justify-content: center;
   padding: 10px 10px;
@@ -255,6 +297,17 @@ ul {
 }
 .btn-movie:hover {
   background-color: var(--movie-btn-hv);
+}
+
+.btn-favorite {
+  background-color: var(--movie-btn);
+  color: var(--text-primary-color);
+  margin: 1.2rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
 .myModal {
@@ -311,6 +364,77 @@ ul {
 
 @media (min-width: 500px) {
   .btn-movie {
+    margin: -1rem 8rem;
+  }
+}
+
+@media (min-width: 612px) {
+  .btn-movie {
+    margin: -1rem 12rem;
+  }
+}
+
+@media (min-width: 705px) {
+  .btn-movie {
+    margin: -1rem 15rem;
+  }
+}
+
+@media (min-width: 810px) {
+  .btn-movie {
+    margin: -1rem 18rem;
+  }
+}
+/* @media (min-width: 870px) {
+  .btn-movie {
+    margin: -1rem 20rem;
+  }
+} */
+
+@media (min-width: 913px) {
+  .btn-movie {
+    margin: -1rem 20rem;
+  }
+}
+
+@media (min-width: 930px) {
+  .btn-movie {
+    margin: -1rem 22rem;
+  }
+}
+
+@media (min-width: 970px) {
+  .btn-movie {
+    margin: -1rem 24rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .btn-movie {
+    margin: -1rem 27rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .btn-movie {
+    margin: -1rem 30rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .btn-movie {
+    margin: -1rem 34rem;
+  }
+}
+@media (min-width: 1400px) {
+  .btn-movie {
+    margin: -1rem 37rem;
+  }
+}
+
+
+/* @media (min-width: 500px) {
+  .btn-movie {
     margin: -1rem 6rem;
   }
 }
@@ -319,7 +443,7 @@ ul {
   .btn-movie {
     margin: -1rem 10rem;
   }
-}
+} */
 
 /* 
 

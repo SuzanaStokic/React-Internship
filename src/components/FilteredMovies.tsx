@@ -1,43 +1,13 @@
-import MovieInfo from "../interface/MovieInfo";
-
-// import MoviesJSON from "../public/movies.json";
-
-type DetailProps = {
-    movie: MovieInfo | null;
-    selectedId: any;
-    onAddToFavorites: any;
-    movieList: MovieInfo[];
-    onClose: any;
+type FilteredMoviesProp = {
+    filtered: any;
 }
 
-const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: DetailProps) => {
-    
-    const array = movieList.map((movie) => movie.id).includes(selectedId);
-    const filtered = movieList.filter((movie) => movie.id === selectedId);
-
-    const handleAdd = () => {
-        const newFavorite: MovieInfo = {
-            id: selectedId, 
-            poster: movie?.poster || "",
-            title : movie?.title || "", 
-            releaseDate: movie?.releaseDate || "",
-            rating: movie?.rating || 0,
-            overview: movie?.overview || "",
-            genre: movie?.genre || "",
-            actors: movie?.actors || [],
-            director: movie?.director || "",
-            screenwriters: movie?.screenwriters || "",
-        };
-        onAddToFavorites(newFavorite);
-        onClose();
-    };
-
+const FilteredMovies = ({filtered}: FilteredMoviesProp) => {
     return (
         <>
-            {array ? ( filtered.map((movie) => {
-                return (
-                
-                    <div className="container" key={movie.id}>
+            {filtered.map((movie: any) => (
+            <>
+              <div className="search-container" key={movie.id}>
                         <div className="top">
                             <div className="title-rating">
                                 <h1 className="title"><span>{movie.title} </span>({movie.releaseDate})<span></span></h1>
@@ -58,7 +28,7 @@ const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: 
                                     <div className="actors">
                                         <h3>Actors</h3>
                                         <div className="actor">
-                                            {movie.actors?.map((data, index) => {
+                                            {movie.actors?.map((data: any, index: any) => {
                                                 return (
                                                     <div key={index}>
                                                         {data}
@@ -82,16 +52,11 @@ const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: 
                                 </div>
                             </div>        
                         </div>
-                        {/* {favorite ? 
-                            <button className="btn btn-movie" onClick={() => onToggle(movie.id)}>Delete from favorites</button> :
-                            <button className="btn btn-movie" onClick={() => onAddToFavorites(movie.id)}>Add movie to favorites</button>
-                        } */}
-                        <button className="btn btn-movie" onClick={handleAdd}>Add movie to favorites</button>
                     </div>
-            )})) : (
-                ""
-            )}
+            </>
+          ))}
         </>
     );
 }
-export default MovieDetail;
+
+export default FilteredMovies;

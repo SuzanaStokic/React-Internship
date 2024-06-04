@@ -9,7 +9,6 @@ const useFetchMovies = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                // const response = 
                 await fetch('../movies.json', {
                     headers: {
                     'Content-Type': 'application/json',

@@ -6,7 +6,6 @@ type FavoritesProps = {
     favorites: MovieInfo[];
     onToggle: any;
     children?: string | JSX.Element|JSX.Element[];
-    onSelect: any;
 }
 
 const FavoriteMovies = (props: FavoritesProps) => {
@@ -16,7 +15,7 @@ const FavoriteMovies = (props: FavoritesProps) => {
         <ul className="list list-favorite">
             
             {props.favorites?.map((movie) => (
-                    <FavoriteMovie movie={movie} key={movie.id} onToggle={props.onToggle} onSelect={props.onSelect}/>
+                    <FavoriteMovie movie={movie} key={movie.id} onToggle={props.onToggle}/>
             ))}
         </ul>
     )

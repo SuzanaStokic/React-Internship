@@ -1,30 +1,38 @@
-import { Button, Menu, MenuItem } from '@mui/material';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { IThemeContext, IThemeMode } from '../context/types';
-import { DarkMode } from '@mui/icons-material';
+import { LightMode, NightsStaySharp } from '@mui/icons-material';
 
 const ThemeSwitcher: React.FunctionComponent = () => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    const [openMenu, setOpenMenu] = useState<boolean>(false);
+    // const buttonRef = useRef<HTMLButtonElement>(null);
+    // const [openMenu, setOpenMenu] = useState<boolean>(false);
     const {themeMode, switchThemeMode} = useContext(ThemeContext) as IThemeContext;
 
-    const handleOpen = () => {
-        setOpenMenu(true);
-    }
-    const handleClose = () => {
-        setOpenMenu(false);
-    }
+    // const handleOpen = () => {
+    //     setOpenMenu(true);
+    // }
+    // const handleClose = () => {
+    //     setOpenMenu(false);
+    // }
+    useEffect(() => {
+        const root = document.documentElement;
+        if (themeMode) {
+              root.classList.add('dark-mode');
+            } else {
+                  root.classList.remove('dark-mode');
+                }
+}, [themeMode]);
 
     const handleSwitchTheme = (mode: IThemeMode) => {
         switchThemeMode(mode)
-        handleClose()
     }
 
   return (
     <>
-        <Button variant='contained' 
-        onClick={handleOpen} 
+        <button className="btn btn-dark" onClick={() => handleSwitchTheme(themeMode)}>
+                {themeMode ? <LightMode style={{color: 'white'}} /> : <NightsStaySharp style={{color: 'rgb(86, 85, 85)'}}/> }
+        </button>
+        {/* <Button variant='contained' 
         startIcon={<DarkMode /> } 
         ref={buttonRef}>
             {themeMode}
@@ -40,7 +48,7 @@ const ThemeSwitcher: React.FunctionComponent = () => {
             selected={themeMode === IThemeMode.DARK}>
                 Dark
             </MenuItem>    
-        </Menu>
+        </Menu> */}
     </>
   )
 }

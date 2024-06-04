@@ -1,4 +1,3 @@
-
 interface CollapseProps {
     collapsedNumOfWords: any;
     expanded?: boolean;
